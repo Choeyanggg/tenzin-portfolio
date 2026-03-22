@@ -12,18 +12,18 @@ const Certifications = () => {
       link: "https://drive.google.com/file/d/1ddofGnmb7zmTJItmLRPf4XpSh0etWNpR/view?usp=sharing",
     },
     {
-      title: "Server-side JavaScript with Node.js",
+      title: "Deep Learning",
       issuer: "Coursera",
-      date: "May 2024",
+      date: "Dec 2025",
       image: "/certificates/cert2.png",
-      link: "https://www.coursera.org/account/accomplishments/verify/MBYUPQLZHF7Y",
+      link: "https://www.coursera.org/account/accomplishments/specialization/52TDUHJXJ2FU",
     },
     {
-      title: "HTML, CSS, and JavaScript for Web Developers",
-      issuer: "Coursera",
-      date: "May 2024",
+      title: "Legacy Responsive Web Design V8",
+      issuer: "free Code Camp",
+      date: "Nov 2023",
       image: "/certificates/cert3.png",
-      link: "#",
+      link: "https://www.freecodecamp.org/certification/fcc1306a8bd-f620-46f4-af97-67cfa4a84ce6/responsive-web-design",
     },
   ];
 

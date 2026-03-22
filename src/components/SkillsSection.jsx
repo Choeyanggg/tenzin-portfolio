@@ -1,23 +1,32 @@
 import { useState } from "react";
 
 const skills = [
+  // Frontend
   { name: "HTML/CSS", level: 95, category: "frontend" },
   { name: "JavaScript", level: 90, category: "frontend" },
   { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Next.js", level: 80, category: "frontend" },
+  { name: "Responsive Design", level: 90, category: "frontend" },
 
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
+  // Data Science / ML
+  { name: "Python", level: 85, category: "data" },
+  { name: "Pandas", level: 80, category: "data" },
+  { name: "NumPy", level: 75, category: "data" },
+  { name: "Matplotlib", level: 75, category: "data" },
+  { name: "Seaborn", level: 75, category: "data" },
+  { name: "Data Analysis", level: 85, category: "data" },
+  { name: "Data Visualization", level: 85, category: "data" },
+  { name: "EDA (Exploratory Data Analysis)", level: 80, category: "data" },
+  { name: "Machine Learning", level: 80, category: "data" },
+  { name: "PyTorch", level: 75, category: "data" },
+  { name: "Power BI", level: 95, category: "data" },
 
+  // Tools
   { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 70, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
+  { name: "Jupyter Notebook", level: 90, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = ["all", "frontend", "data", "tools"];
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -45,7 +54,7 @@ const SkillsSection = () => {
                   : "bg-card text-muted-foreground hover:bg-primary/10"
               }`}
             >
-              {category}
+              {category === "data" ? "Data Science / ML" : category}
             </button>
           ))}
         </div>
