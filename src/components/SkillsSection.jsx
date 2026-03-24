@@ -1,98 +1,78 @@
-import { useState } from "react";
+import React from "react";
 
-const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "Responsive Design", level: 90, category: "frontend" },
-
-  // Data Science / ML
-  { name: "Python", level: 85, category: "data" },
-  { name: "Pandas", level: 80, category: "data" },
-  { name: "NumPy", level: 75, category: "data" },
-  { name: "Matplotlib", level: 75, category: "data" },
-  { name: "Seaborn", level: 75, category: "data" },
-  { name: "Data Analysis", level: 85, category: "data" },
-  { name: "Data Visualization", level: 85, category: "data" },
-  { name: "EDA", level: 80, category: "data" },
-  { name: "Machine Learning", level: 80, category: "data" },
-  { name: "PyTorch", level: 75, category: "data" },
-  { name: "Power BI", level: 95, category: "data" },
-
-  // Database
-  { name: "PL/SQL", level: 80, category: "database" },
-  { name: "MySQL", level: 80, category: "database" },
-
-  // Tools
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
-  { name: "Jupyter Notebook", level: 90, category: "tools" },
+const skillGroups = [
+  {
+    title: "Frontend Tech",
+    skills: ["HTML", "CSS", "JavaScript", "React", "WordPress"],
+  },
+  {
+    title: "Data Science / ML",
+    skills: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "EDA",
+      "Machine Learning",
+      "PyTorch",
+      "Power BI",
+    ],
+  },
+  {
+    title: "Database",
+    skills: ["MySQL", "PL/SQL"],
+  },
+  {
+    title: "Tools & Interaction",
+    skills: ["GitHub", "VS Code", "Jupyter Notebook"],
+  },
 ];
 
-const categories = ["all", "frontend", "data", "database", "tools"];
-
-const formatCategory = (cat) => {
-  if (cat === "data") return "Data Science / ML";
-  return cat.charAt(0).toUpperCase() + cat.slice(1);
-};
-
 const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
-  );
-
   return (
-    <section id="skills" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+    <section id="skills" className="py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Heading (MATCH YOUR THEME) */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           My <span className="text-primary">Skills</span>
         </h2>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
-            <button
-              key={key}
-              onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full transition-all duration-300 capitalize ${
-                activeCategory === category
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-card text-muted-foreground hover:bg-primary/10 hover:scale-105"
-              }`}
-            >
-              {formatCategory(category)}
-            </button>
-          ))}
-        </div>
+        <p className="text-center text-muted-foreground mb-12">
+          Building data-driven solutions using machine learning and analytical thinking.
+        </p>
 
-        {/* Skill Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, key) => (
+        {/* GRID FIX */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {skillGroups.map((group, index) => (
             <div
-              key={key}
-              className="bg-card p-6 rounded-xl border border-border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              key={index}
+              className="bg-card border border-border rounded-xl p-6 
+              transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="mb-4">
-                <h3 className="font-semibold text-lg">{skill.name}</h3>
-              </div>
+              {/* TITLE */}
+              <h3 className="text-primary font-semibold text-lg mb-4">
+                {group.title}
+              </h3>
 
-              <div className="w-full bg-border h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full transition-all duration-700"
-                  style={{ width: `${skill.level}%` }}
-                />
-              </div>
-
-              <div className="text-right mt-2">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
+              {/* SKILLS */}
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs rounded-full 
+                    bg-primary/10 text-primary border border-primary/20
+                    transition-all duration-300 hover:bg-primary/20"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>
