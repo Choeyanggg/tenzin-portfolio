@@ -208,7 +208,7 @@ const ResumeSection = () => {
           </a>
 
           <a
-            href="www.linkedin.com/in/tenzinchoeyang"
+            href="https://www.linkedin.com/in/tenzinchoeyang"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border hover:bg-primary/10 transition"
