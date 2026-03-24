@@ -15,10 +15,14 @@ const skills = [
   { name: "Seaborn", level: 75, category: "data" },
   { name: "Data Analysis", level: 85, category: "data" },
   { name: "Data Visualization", level: 85, category: "data" },
-  { name: "EDA (Exploratory Data Analysis)", level: 80, category: "data" },
+  { name: "EDA", level: 80, category: "data" },
   { name: "Machine Learning", level: 80, category: "data" },
   { name: "PyTorch", level: 75, category: "data" },
   { name: "Power BI", level: 95, category: "data" },
+
+  // Database
+  { name: "PL/SQL", level: 80, category: "database" },
+  { name: "MySQL", level: 80, category: "database" },
 
   // Tools
   { name: "Git/GitHub", level: 90, category: "tools" },
@@ -26,7 +30,12 @@ const skills = [
   { name: "Jupyter Notebook", level: 90, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "data", "tools"];
+const categories = ["all", "frontend", "data", "database", "tools"];
+
+const formatCategory = (cat) => {
+  if (cat === "data") return "Data Science / ML";
+  return cat.charAt(0).toUpperCase() + cat.slice(1);
+};
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -48,13 +57,13 @@ const SkillsSection = () => {
             <button
               key={key}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full transition capitalize ${
+              className={`px-5 py-2 rounded-full transition-all duration-300 capitalize ${
                 activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-card text-muted-foreground hover:bg-primary/10"
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-card text-muted-foreground hover:bg-primary/10 hover:scale-105"
               }`}
             >
-              {category === "data" ? "Data Science / ML" : category}
+              {formatCategory(category)}
             </button>
           ))}
         </div>
@@ -64,20 +73,20 @@ const SkillsSection = () => {
           {filteredSkills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg border border-border card-hover"
+              className="bg-card p-6 rounded-xl border border-border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
-              <div className="text-left mb-4">
+              <div className="mb-4">
                 <h3 className="font-semibold text-lg">{skill.name}</h3>
               </div>
 
               <div className="w-full bg-border h-2 rounded-full overflow-hidden">
                 <div
                   className="bg-primary h-2 rounded-full transition-all duration-700"
-                  style={{ width: skill.level + "%" }}
+                  style={{ width: `${skill.level}%` }}
                 />
               </div>
 
-              <div className="text-right mt-1">
+              <div className="text-right mt-2">
                 <span className="text-sm text-muted-foreground">
                   {skill.level}%
                 </span>

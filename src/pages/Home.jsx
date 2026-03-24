@@ -5,6 +5,7 @@ import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
 import Certifications from "../components/Certifications";
 import ResumeSection from "../components/ResumeSection";
+import ContactSection from "../components/ContactSection";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <ProjectsSection />
       <Certifications />
       <ResumeSection />
+      <ContactSection />
     </div>
   );
 };
